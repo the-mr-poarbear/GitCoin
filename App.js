@@ -1,20 +1,37 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View, Image, TouchableOpacity, StatusBar, Platform } from 'react-native';
+import Commits from './components/commits';
+import GitCatButton from './components/GitCatButton';
+import Navbar from './components/Navbar';
+import Main from './screens/main.jsx';
+import { createContext, useEffect, useState } from 'react';
+
+
+export const userContext = createContext()
 
 export default function App() {
+  const [user, setUser] = useState({})
+
+  useEffect(() => {
+    console.log('hi')
+
+  }, [])
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <userContext.Provider value={{ user, setUser }}>
+      <SafeAreaView style={styles.container}>
+        <Main />
+        <StatusBar style="auto" />
+      </SafeAreaView>
+    </userContext.Provider>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#000',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0
   },
 });
