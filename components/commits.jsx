@@ -1,11 +1,18 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Image, StyleSheet, Text, View } from 'react-native'
+import { useSetInterval } from '../hooks/useSetInterval'
 
-const Commits = () => {
+
+const Commits = ({commits , stars}) => {
+  const [com , setCom] = useState(0)
+ 
+
+  useSetInterval(() => setCom(com + stars), 1000)
+
   return (
     <View style={styles.container}>
         <Image style={{ width: 40, height: 40, resizeMode: 'contain', }} source={require('../assets/commitIcon.png')} />
-        <Text style={styles.text}>2302931</Text>
+        <Text style={styles.text}>{com + commits}</Text>
     </View>
     
   )

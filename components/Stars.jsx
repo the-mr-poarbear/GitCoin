@@ -1,11 +1,15 @@
+
 import React from 'react'
 import { Image, StyleSheet, Text, View } from 'react-native'
 
-const Stars = () => {
+const Stars = ({stars}) => {
+
+ 
+
   return (
     <View style={styles.container}>
         <Image style={styles.icon} source={require('../assets/star.png')}/>
-        <Text style={styles.text}>+ 13042KC</Text>
+        <Text style={styles.text}>+ {stars}KC</Text>
     </View>
   )
 }
