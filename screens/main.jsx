@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from 'react'
-import { StatusBar, StyleSheet, View } from 'react-native'
+import { Platform, SafeAreaView, StatusBar, StyleSheet, View } from 'react-native'
 import Commits from '../components/commits'
 import GitCatButton from '../components/GitCatButton'
 import Navbar from '../components/Navbar'
@@ -17,18 +17,29 @@ const Main = () => {
 
   return (
     <energyContext.Provider value={{energy , setEnergy}}>
-      <View style={{alignItems:'center'}}>
+      <SafeAreaView style={styles.container}>
           {/* {console.log(user)} */}
           <Stars stars={user.stars}/>
-          <Commits commits={user.commits} stars={user.stars} />
+          <Commits />
           <GitCatButton />
           <Energy userMaxEn={user.maxEnergy} energyBoost={user.energyBoost} />
-          <Navbar />
-      </View>
+          {/* <Navbar /> */}
+      </SafeAreaView>
     </energyContext.Provider>
     
   )
 }
+
+const styles= StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#000',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0
+  },
+})
+
 
 
 export default Main

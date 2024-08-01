@@ -1,15 +1,18 @@
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { Button, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 
 const Navbar = () => {
+ const navigation = useNavigation()
+
   return (
    <View style={styles.container}>
-    <TouchableOpacity style={styles.btn}>
+    <TouchableOpacity style={styles.btn} onPress={()=> navigation.navigate('main')}>
         <Image style={styles.icon} source={require('../assets/commit.png')}/>
         <Text style={styles.text}>Commits</Text>
     </TouchableOpacity >
 
-    <TouchableOpacity style={styles.btn}>
+    <TouchableOpacity style={styles.btn} onPress={()=> navigation.navigate('boost')}>
         <Image style={styles.icon} source={require('../assets/boost.png')}/>
         <Text style={styles.text}>Boost</Text>
     </TouchableOpacity>

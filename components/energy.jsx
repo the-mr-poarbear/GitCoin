@@ -17,7 +17,7 @@ const Energy = ({userMaxEn , energyBoost}) => {
   }, 1000)
 
   return (
-    <View style={{flexDirection:'row' , marginTop:40 , alignSelf:'flex-start'}}>
+    <View style={{flexDirection:'row' , marginTop:40 , alignSelf:'flex-start' ,  marginBottom:20}}>
         <Image style={{width:20, height:20, marginEnd:10 , resizeMode:'contain'}} source={require('../assets/contribution.png')} />
         <Text style={{color:'white'}}>{energy}/{userMaxEn} </Text>
     </View>
